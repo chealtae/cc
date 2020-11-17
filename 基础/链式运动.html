@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{width: 100px; height: 100px; background-color: orange; margin: 50px;}
+    </style>
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementsByTagName('div');
+            oDiv[0].onclick = function(){
+                //宽变成300
+                startMove(this, "width" ,300,function(){
+                    startMove(this , "height",300 ,function(){
+                        startMove( this , "margin-left" , 300)
+                    })
+                })
+            }
+            // oDiv[1].onclick = function(){ 
+            //     //高变成300
+            //     startMove( this, "height", 300)
+            // }
+            // oDiv[2].onclick = function(){ 
+            //     //marginleft 从50 变300
+            //     startMove( this , "margin-left" , 300)
+            // }
+            // oDiv[3].onclick = function(){
+            //     //字体变大
+            //     startMove(this, "font-size" , 100)
+            // }
+        }
+        function show(){
+
+        }
+        function startMove(node , attr, iTarget ,complete){
+            clearInterval(node.timer)
+            node.timer = setInterval(function(){
+                var iCur =parseInt( getStyle(node,attr));
+                document.title = iCur;
+                var speed = (iTarget - iCur) / 8; 
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(iTarget == iCur){
+                    clearInterval(node.timer)
+                    if(complete){
+                        complete.call(node);
+                    }
+                }else{
+                    node.style[attr] = iCur + speed + 'px';
+                }
+            },30)
+        }
+
+
+
+        function getStyle(node, cssStr){
+            
+            return node.currentStyle ? node.currentStyle[cssStr] : getComputedStyle(node)[cssStr]; 
+        }
+
+    </script>
+</head>
+<body>
+    <div> </div>
+    <div> </div>
+    <div> </div>
+    <div>div文本</div>
+</body>
+</html>

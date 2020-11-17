@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{width: 100px; height: 100px; background-color: orange; margin: 50px;}
+    </style>
+    <script>
+        window.onload = function(){
+            var aDivs = document.getElementsByTagName("div");
+            for (var i = 0; i<aDivs.length ; i++){
+                aDivs[i].onmouseover = function(){
+                    starMove(this, 300)
+                }
+                aDivs[i].onmouseout = function(){
+                    starMove(this,100)
+                }
+            }
+        }
+        
+        //var timer = null;
+        function starMove(node, iTarget){
+            clearInterval(node.timer);
+            node.timer = setInterval(function(){
+                speed = (iTarget - node.offsetWidth)/8;
+                speed = speed> 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(node.offsetWidth == iTarget){
+                    clearInterval(node.timer);
+                }else{
+                    node.style.width = node.offsetWidth + speed +'px';
+                }
+            },30)
+        }
+    </script>
+</head>
+<body>
+    <div> </div>
+    <div> </div>
+    <div> </div>
+    <div></div>
+</body>
+</html>

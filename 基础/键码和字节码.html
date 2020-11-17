@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        keyCode 键码
+        which
+        返回值键盘的ascll码，不区分大小写 
+        var which  =e.which ||e.keyCode 只在keydown下支持
+
+        charCode 字节码
+        which
+        返回值：当前按下键的ascll码 区分大小写
+        var which  =e.which ||e.charCode 只在keypress下支持
+        */
+        window.onload = function(){
+
+            document.onkeydown = function(ev){
+                var e = ev || window.event;
+                var which = e.which || e.keyCode
+                alert(which);
+            }
+        }
+   
+    </script>
+</head>
+<body>
+    <button id = 'btn1'>按钮</button>
+</body>
+</html>

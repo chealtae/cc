@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function show(x , y){
+            alert(this);
+            alert(x + ',' + y);
+        }
+        // show(10,20)
+
+        /*
+            call
+                格式；函数名.call()
+                参数：
+                    第一个参数，是要指向的对象
+                    第二个参数：原函数的参数往后移动
+        */ 
+    //    show.call("call" , 10 , 20)
+
+
+        /*
+            格式；函数名.apply()
+                参数：
+                    第一个参数，是要指向的对象
+                    第二个参数：数组，数组放入原有的所有参数
+        */
+        show.apply("call",[20,30])
+
+        //bind 第二次调用才可以 
+        
+    </script>
+</body>
+</html>

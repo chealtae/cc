@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0px; padding: 0px;}
+        #div1{width: 100px; height: 300px; background-color: orange; position: absolute; right: 0px;}
+    </style>
+    <script>
+        window.onload = function(){
+             var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+             var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+             var oDiv = document.getElementById("div1")
+             var iH =parseInt( scrollTop + (windowHeight - oDiv.offsetHeight) / 2) ;
+             alert(windowHeight)
+             startMove(iH)
+
+//             window.onscroll = function(){
+//                 var oDiv = document.getElementById('div1');
+//                 var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+// //               oDiv.style.top = document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop+'px';
+//                 //可视区域的高度减掉物体高度再加上向上滚动的高度
+//                 startMove(document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop)
+//             }
+            
+
+            window.onscroll = function(){
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                var iH = scrollTop + (windowHeight - oDiv.offsetHeight) / 2  ;
+                startMove(iH)
+
+             }
+
+
+            // window.onresize = function(){
+            //     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            //     var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            //     var iH =parseInt( scrollTop + (windowHeight - oDiv.offsetHeight) / 2) ;
+            //     startMove(iH)
+            // }
+        }
+
+        
+
+        // var timer = null;
+
+        // function startMove(iTarget){
+        //     var oDiv = document.getElementById('div1')
+        //     clearInterval(timer)
+        //     timer = setInterval(function(){
+                
+        //         var speed = (iTarget - oDiv.offsetTop) / 8; 
+        //         speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+        //         if(oDiv.offsetTop == iTarget){
+        //             clearInterval(timer);
+        //         }else{
+        //             oDiv.style.top = oDiv.offsetTop + speed + 'px';
+        //         }
+
+        //     },30)
+        var timer = null;
+        function startMove(iTarget){
+            var oDiv = document.getElementById('div1')
+            clearInterval(timer)
+            timer = setInterval(function(){
+
+                var speed = (iTarget - oDiv.offsetTop) / 8;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(oDiv.offsetTo == iTarget){
+                    clearInterval(timer)
+                }else{
+                    oDiv.style.top = oDiv.offsetTop + speed + 'px';
+                }
+
+            },30)
+        }
+    </script>
+</head>
+<body style="height: 3000px;">
+    <div id="div1"></div>
+</body>
+</html>

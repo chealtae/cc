@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            本地存储技术
+            localstorage
+                1.永久存储
+                2.最大可存储5M 客户端的一个微型数据库
+                3.只能存储string
+            cookie
+                1.可以设置过期时间
+                2.最大可以存4KB
+                3.每个域名下面最多可以存储50条
+            sessionStorage
+
+
+            localstorage 对象
+                setItem(name,value);
+                getItem(name);
+                removeItem(name);
+        */ 
+       if(!window.localStorage){
+           alter('当前页面不支持localstorage')
+       }
+       else{
+           localStorage.setItem("a","1");
+           localStorage.b = '2';
+           localStorage["c"] = "3";
+       }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

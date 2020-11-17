@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{display: block;font-size: 40px; margin: 100px; width: 130px;}
+        #msg{width: 600px; height: 150px ;background-color: gray; color: white; display: none; position: absolute;}
+    </style>
+    <script>
+        var arr = ["这是唐太宗","这是唐高宗","这是武则天","这是唐玄宗"]
+        window.onload = function(){
+            var aAs = document.getElementsByTagName('a');
+            var oMsg = document.getElementById('msg');
+            for( var i = 0; i < aAs.length ; i++){
+                aAs[i].index = i
+                aAs[i].onmouseover = function(){
+                    oMsg.style.display = 'block';
+                    oMsg.innerHTML = arr[this.index];
+                }
+                aAs[i].onmouseout = function(){
+                    oMsg.style.display = 'none';
+                }
+                aAs[i].onmousemove = function(ev){
+                    var e = ev || window.event;
+                    oMsg.style.left = e.clientX + 5 + "px";
+                    oMsg.style.top = e.clientY + 5 + "px";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <a href="#">唐太宗</a>
+    <a href="#">唐高宗</a>
+    <a href="#">武则天</a>
+    <a href="#">唐玄宗</a>
+    <div id="msg" ></div>
+</body>
+</html>

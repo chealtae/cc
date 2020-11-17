@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var oBt = document.getElementById('but1');
+            oBt.onclick = function(){
+
+                /*
+                    XMLHttpRequest ,IE8 以下不兼容
+                    ie8以下声明
+                    AcitiveXObject("Micsoft.XMLHTTP")
+                */ 
+                //创建ajax对象
+                var xhr = new XMLHttpRequest();
+                //兼容写法
+                var xhr =null
+                try{
+                    xhr = new XMLHttpRequest();
+                }catch(error){
+                    xhr = new ActiveXObject("Micsoft.XMLHTTP");
+                }
+                /*
+                    调用open
+                    第一个参数：请求方式 ，get post
+                    第二个参数： url
+                    第三个参数： 是否同步 true异步 false 同步
+                */ 
+               xhr.open('get','1.txt',true)
+
+               // 调用send
+               xhr.send();
+
+               //等待数据响应
+               /*
+                    readystatechange 事件类型
+                    xhr.readyState 发生变化的时候调用
+                    0 调用open方法之前
+                    1 调用send方法之后
+                    2 send方法完成，已经接受到所有的响应内容
+                    3 正在解析下载数据
+                    4 解析完成
+
+               */    
+               xhr.onreadystatechange = function(){
+                   if(xhr.readyState ==4){
+                       if(xhr.status == 200){
+                        alert(xhr.responseText)
+                       }else{
+                           alert("Error"+xhr.status )
+                       }
+                       
+                   }
+               }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="but1">下载数据</button>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0px; padding: 0px;}
+        #ul1 li{list-style: none; width: 400px ;height: 200px; margin: 10px ; float: left;}
+        #ul1 li img{width: 100%; height: 100%;}
+        #ul1{ position: absolute;left: 0;}
+        #div1{width: 1680px ;height: 220px ; border:  1px black solid; margin: 50px auto;position: relative; overflow: hidden;}
+    </style>
+    <script src="./startMove.js"></script>
+    <script>
+        window.onload = function(){
+            var oUl1 = document.getElementById("ul1")
+            var oDiv1 = document.getElementById("div1")
+
+            oUl1.innerHTML +=oUl1.innerHTML;
+            //还要重新设置ul 标签的宽
+            oUl1.style.width= 420 *8 +"px";
+
+            setInterval(function(){
+                startMove(oUl1,{left: oUl1.offsetLeft - 420},function(){
+                    if(oUl1.offsetLeft <= -oUl1.offsetWidth/2)
+                          oUl1.style.left = "0px"
+                })
+            },2000)
+
+            //没有设置缓冲运动时
+            // setInterval(function(){
+            //     oUl1.style.left = oUl1.offsetLeft - 2 + 'px';
+            //     if(oUl1.offsetLeft <= -oUl1.offsetWidth/2)
+            //         oUl1.style.left = "0px"
+            // },30)
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <ul id="ul1">
+            <li>
+                <img src="../../js/多图片缩放/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="../../js/多图片缩放/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="../../js/多图片缩放/3.jpg" alt="">
+            </li>
+            <li>
+                <img src="../../js/多图片缩放/4.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            1.传统事件绑定
+                <1>重复添加会产生覆盖
+            
+            2.事件监听器
+                    addEventListener()
+                    格式:node.addEventListener()
+                    参数：
+                        第一个参数： 事件类型
+                        第二个参数： 绑定函数
+                        第三个参数： boolean值 true事件捕获
+                                              false事件冒泡 默认
+
+                    removerEventListener()
+        */ 
+        window.onload = function(){
+            var obtn = document.getElementById('btn1');
+            obtn.addEventListener("click",function(){
+                alert("点击一");
+            },false);
+
+            obtn.addEventListener("click",function(){
+                alert("点击二");
+            },false);
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1">按钮</button>
+</body>
+</html>

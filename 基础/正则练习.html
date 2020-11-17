@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //  匹配压缩包后缀名 zip rar gz
+        // 转义字符  \. 
+        // var box = /^\w+\.(zip|rar|gz)$/
+        // alert(box.test("hello.zip"))
+
+        // 验证手机
+        
+        // var phonenum =/^1\d{10}$/
+        // alert(phonenum.test("13276012666"))
+
+        // 验证身份证
+        // var box = /^[1-9]\d{16}(\d|x)$/
+        // alert(box.test("331081199904217333"))
+
+        //验证是否为纯中文
+        var box = /^[\u4e00-\u9fa5]+$/
+        alert(box.test("中国"))
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

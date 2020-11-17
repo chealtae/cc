@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        target 目标对象/触发对象
+        */
+        window.onload = function(){
+            var oli = document.getElementById("li1");
+            oli.onclick = function(ev){
+                var e = ev || window.event;
+                var target = e.target || window.event.srcElement;
+                // alert(this.innerHTML)
+                alert(target.innerHTML)
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li id="li1">
+            111
+        </li>
+        <li>
+            222
+        </li>
+        <li>
+            333
+        </li>
+    </ul>
+</body>
+</html>

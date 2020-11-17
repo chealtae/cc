@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img1{opacity: 0.3; filter: (opacity=30); width: 600px; height: 300px;}
+    </style>
+    <script>
+        window.onload = function(){
+            var oImg = document.getElementById('img1');
+            oImg.onmouseover = function(){
+                startMove(100);
+
+            }
+
+            oImg.onmouseout = function(){
+                startMove(30);
+            }
+        }
+
+        var alpha = 30;
+        var timer = null;
+        function startMove(itarget){
+            var oImg = document.getElementById('img1');
+            clearInterval(timer);
+            var speed = 2;
+            speed = itarget > alpha ? Math.abs(speed) : -Math.abs(speed);
+            timer = setInterval(function(){
+                if (itarget == alpha){
+                    clearInterval(timer)
+                }else{
+                    alpha += speed ;
+                }
+
+                // document.title = alpha;
+                oImg.style.opacity = alpha/100;
+                oImg.style.filter = `alpha(opacity=${alpha})`;
+            },30);
+
+           
+        }
+    </script>
+</head>
+<body>
+    <img id="img1" src="../bg.jpg" alt="">
+
+</body>
+</html>

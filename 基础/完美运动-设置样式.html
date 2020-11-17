@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{ width: 100px; height: 100px; background-color: black; margin: 100px;}
+    </style>
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementById('div1');
+            oDiv.onclick = function(){
+                setSyle(this,{
+                    width:"300px",
+                    height:"300px",
+                    backgroundColor:"blue"
+                })
+            }
+        }
+
+        function setSyle(node ,cssObj){
+            for(var attr in cssObj){
+                node.style[attr] = cssObj[attr];
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

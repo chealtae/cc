@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{ width: 100px; height: 100px; background-color: pink; }
+    </style>
+    <script>
+            function startMove(node , cssObj,complete ){
+            clearInterval(node.timer)
+            node.timer = setInterval(function(){
+                for(var attr in cssObj){
+                    var iTarget = cssObj[attr];
+                    //node.style[attr] = cssObj[attr];
+                    
+                    var iCur =parseInt( getStyle(node,attr));
+                    
+                    document.title = iCur;
+                    var speed = (iTarget - iCur) / 8; 
+                    //alert(iTarget - iCur)
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    if(iTarget == iCur){
+                    clearInterval(node.timer)
+                    if(complete){
+                        complete.call(node);
+                    }
+                    }else{
+                    node.style[attr] = iCur + speed + 'px';
+                    }
+                }
+            },30)
+        }
+
+        window.onload = function(){
+            var oDiv = document.getElementById('div1');
+            oDiv.onmouseover = function(){
+                startMove(this,{
+                    width:300,
+                    height:300,
+                    margintop:-50,
+                    marginleft:-50
+                })
+            }
+            oDiv.onmouseout = function(){
+                startMove(this,{
+                    width:100,
+                    height:100,
+                    margintop:0,
+                    marginleft:0
+                })
+            }
+        }
+
+        function getStyle(node, cssStr){
+            
+            return node.currentStyle ? node.currentStyle[cssStr] : getComputedStyle(node)[cssStr]; 
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

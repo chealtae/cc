@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{padding: 50px;}
+        #div1{background-color: red;}
+        #div2{background-color: blue;}
+        #div3{background-color: yellow;}
+        /* 事件冒泡：由里向外触发
+            事件捕获：事件由外向里触发
+            要阻止事件冒泡 */
+    </style>
+    <script>
+        window.onload = function(){
+            var aDivs = document.getElementsByTagName("div");
+            for ( var i = 0 ; i < aDivs.length ; i++){
+                aDivs[i].onclick = function(ev){
+                    var e = ev || window.event;
+                    alert(this.id);
+                    // e.cancelBubble = true;
+                    e.stopPropagation(); 
+                }
+            }
+
+            // 封装跨浏览器的组织冒泡
+            function stopBubble(e){
+                if(e.stopPropagation){
+                    e.stopPropagation
+                }else{
+                    e.cancelBubble = true;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <div id="div3">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
