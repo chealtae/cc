@@ -39,8 +39,10 @@
         // alert(box.test(str));
 
         var str = "afaf google aaa cc ee ";
-        var box = /\W/;
-        alert(box.test(str));
+        var box = new RegExp(/^[\+\-]?\d+/g);
+        var str1 =  "-42";
+        alert(box.test(str1));
+        alert(str1.match(box))
     </script>
 </head>
 <body>
